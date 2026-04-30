@@ -7,17 +7,29 @@ package es.dam.codeoptimization.fantasy;
 import es.dam.codeoptimization.PlayerStats;
 
 /**
- * THE CLASS YOU HAVE TO MODIFY
+ * Calcula los puntos para un juego tipo Fantasy
  *
- * @author Boris
+ * @author Jose
  */
 public class FantasyCalculator {
-
+    
+/**
+ * Calcula los puntos de un jugador en función de sus estadisticas
+ *
+ * @param stats son las estadisticas de un jugador
+ * @return los puntos obtenidos del jugador
+ */
     public static int calculatePoints(PlayerStats stats) {
         return calculateCommonPoints(stats) 
                 + calculatePointsByPosition(stats);
     }
-
+    
+/**
+ * Calcula los puntos que dependen de la posición de un jugador en función de sus estadisticas
+ *
+ * @param stats son las estadisticas de un jugador
+ * @return los puntos que dependen de la posición
+ */
     private static int calculatePointsByPosition(PlayerStats stats) {
         final String GOALKEEPER_STRING = "PORTERO";
         final String DEFENCE_STRING = "DEFENSA";
@@ -43,7 +55,13 @@ public class FantasyCalculator {
         }
         return points;
     }
-
+    
+/**
+ * Calcula los puntos comunes de un jugador en función de sus estadisticas
+ *
+ * @param stats son las estadisticas de un jugador
+ * @return los puntos obtenidos del jugador que sean comunen a todas las posiciones
+ */
     private static int calculateCommonPoints(PlayerStats stats) {
         return calculateMinutesPlayed(stats.minutes)
                 + calculateYellowCard(stats.yellowCard)
